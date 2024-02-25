@@ -1,5 +1,6 @@
 from notion_client import Client
 from .assignment import Assignment
+# from notion.client import NotionClient
 
 
 class NotionDatabaseClient:
@@ -14,6 +15,7 @@ class NotionDatabaseClient:
 
     def __init__(self, token: str, database_id: str):
         self.notion = Client(auth=token)
+        # self.notion = NotionClient(token_v2="v02%3Auser_token_or_cookies%3AaZtw62AJn5qeCf_FMTi4Wkzo0gfF_3wSrjwqKnlcCfWWTGCTVwm8ANnyM76Ortvr1EVBJfqZzyjWk78ZNjHwG3JeopCmcvuM7UtCWkGsra15JQBTsb2v7mZDp5lHAYKVX6z0")
         self.database_id = database_id
         self.assignments = dict()
 

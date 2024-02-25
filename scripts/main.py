@@ -37,4 +37,4 @@ if should_run_script(
 else:
     # Only print this message if the --computer flag is not set
     if not flags["computer"]:
-        print("Cotion has already been run today. Use --force to run Cotion anyway.")
+        print("Canvas-to-notion has already been run today. Use --force to run canvas-to-notion anyway.")

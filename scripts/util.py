@@ -4,8 +4,10 @@ import json
 from datetime import datetime
 
 # Get the absolute path to the the config file
-script_dir = os.path.dirname(os.path.abspath(__file__))
-json_file_path = os.path.join(script_dir, "config.json")
+# script_dir = os.path.dirname(os.path.abspath(__file__))
+# json_file_path = os.path.join(script_dir, "config.json")
+config_file_path = "/Users/marmik/Downloads/config.json"
+
 
 
 def parse_flags() -> dict:
@@ -21,7 +23,7 @@ def parse_flags() -> dict:
 
 def parse_config_file() -> dict:
     """Parse the config file"""
-    with open(json_file_path, "r") as file:
+    with open(config_file_path, "r") as file:
         config = json.load(file)
     return config
 
@@ -35,7 +37,7 @@ def should_run_script(force_flag: bool, last_run_date_str: str) -> bool:
 
     # If --force flag is provided, allow the script to run
     if force_flag:
-        print("Cotion has been forced to run.")
+        print("Canvas-to-notion has been forced to run.")
         return True
 
     # Check For Timestamp
@@ -45,7 +47,7 @@ def should_run_script(force_flag: bool, last_run_date_str: str) -> bool:
     run = last_run_date != current_date
 
     if run:
-        print(f"Cotion was last run: {last_run_date}. Running Cotion.")
+        print(f"Canvas-to-notion was last run: {last_run_date}. Running Cotion.")
     return run
 
 
@@ -53,5 +55,5 @@ def update_timestamp(config: dict):
     """Update the timestamp file with the current date."""
     current_date = datetime.now().date()
     config["LAST_RUN_DATE"] = current_date.strftime("%Y-%m-%d")
-    with open(json_file_path, "w") as file:
+    with open(config_file_path, "w") as file:
         json.dump(config, file)
