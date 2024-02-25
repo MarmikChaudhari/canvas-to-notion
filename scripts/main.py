@@ -1,5 +1,5 @@
 from .util import *
-from .notion import NotionDatabaseClient
+from .scriptnotion import NotionDatabaseClient
 from .canvas import CanvasAPIClient
 
 config = parse_config_file()
